@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Townsville-library</string>
+    <string name="student">Student</string>
+    <string name="resident">Resident</string>
+</resources>

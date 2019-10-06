@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin_end">10dp</dimen>
+    <dimen name="fab_margin_bottom">20dp</dimen>
+    <dimen name="rbtn_text_size">28sp</dimen>
+    <dimen name="card_padding">50dp</dimen>
+    <dimen name="margin_top">20dp</dimen>
+    <dimen name="padding_left">10dp</dimen>
+    <dimen name="baooks_row_padding_top">16dp</dimen>
+    <dimen name="baooks_row_padding_left">20dp</dimen>
+</resources>
