@@ -8,18 +8,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import fr.d2factory.libraryapp.book.Book;
+import fr.d2factory.libraryapp.book.BookRepository;
 import fr.d2factory.libraryapp.ui.library.BooksAdapter;
 
 public class LibraryActivity extends AppCompatActivity {
+    private static final String TAG = "LibraryActivity";
     NestedScrollView booksScV;
     RecyclerView mainActivityRecyclerView;
     private ArrayList<Book> books;
+    BookRepository br;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +32,23 @@ public class LibraryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_library);
 
         booksScV = findViewById(R.id.navigation_dashboard_scroll_view);
-
+        try {
+            iniRecycleView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void iniRecycleView(View view) {
+    private void iniRecycleView() throws IOException {
         // 1. get a reference to mainActivityRecyclerView
-        mainActivityRecyclerView = view.findViewById(R.id.books_recycler_view);
+        mainActivityRecyclerView = findViewById(R.id.books_recycler_view);
         // this is data fr  o recycler view
         /**
          * Add data here.
          */
-        getBooks();
+        Log.i(TAG, "iniRecycleView: ...");
+        br = new BookRepository();
+        updateBooksList();
 
         // 2. set layoutManger
         mainActivityRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,7 +69,11 @@ public class LibraryActivity extends AppCompatActivity {
         }));
     }
 
-    private void getBooks() {
+    private void updateBooksList() throws IOException {
+        //books = br.getBooks(this);
+        br.loadJSONFromAsset(this);
+
+
     }
 
 }

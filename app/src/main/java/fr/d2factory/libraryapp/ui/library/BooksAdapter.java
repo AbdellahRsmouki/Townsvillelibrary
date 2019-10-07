@@ -88,7 +88,8 @@ public class BooksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     // Return the size of your itemsData (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return books.size();
+
+        return books!=null? books.size():0;
     }
 
 
