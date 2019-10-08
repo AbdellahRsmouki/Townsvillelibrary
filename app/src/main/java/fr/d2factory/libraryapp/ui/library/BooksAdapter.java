@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fr.d2factory.libraryapp.book.Book;
+import fr.d2factory.libraryapp.book.BookRepository;
 import fr.d2factory.libraryapp.townsville_library.R;
 
 
@@ -51,10 +52,14 @@ public class BooksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
           ViewHolder vh = (ViewHolder) viewHolder;
-        vh.bind(books.get(position), listener);
-        vh.bookTitle.setText(books.get(position).getTitle());
-        vh.bookAuthor.setText(books.get(position).getAuthor());
-        vh.bookISBN.setText(books.get(position).getIsbn()+"");
+          Book book = books.get(position);
+        vh.bind(book, listener);
+        vh.bookTitle.setText(book.getTitle());
+        vh.bookAuthor.setText(book.getAuthor());
+        vh.bookISBN.setText(book.getIsbn().getIsbnCode()+"");
+        BookRepository br = new BookRepository();
+        if (br.isBorrowedBook(book))
+            vh.bookState.setBackgroundColor(Color.parseColor("#FF6347"));
     }
 
     public interface OnItemClickListener {

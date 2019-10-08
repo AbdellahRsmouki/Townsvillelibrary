@@ -5,28 +5,29 @@ import android.content.Context;
 import java.time.LocalDate;
 
 import fr.d2factory.libraryapp.book.Book;
+import fr.d2factory.libraryapp.library.HasLateBooksException;
 import fr.d2factory.libraryapp.library.Library;
 
 /**
  * A member is a person who can borrow and return books to a {@link Library}
  * A member can be either a student or a resident
  */
-public abstract class Member {
+public abstract class Member implements Library{
     /**
      * An initial sum of money the member has
      */
     private float wallet;
-    private Library memberState;
+    private Member memberState;
     private int memberId;
     private boolean borrow = true;
 
-    public Member(int memberId, float wallet, Library memberState) {
+    public Member(int memberId, float wallet, Member memberState) {
         this.wallet = wallet;
         this.memberState = memberState;
         this.memberId = memberId;
     }
 
-    public void changeState(Library state) {
+    public void changeState(Member state) {
         this.memberState = state;
     }
 
@@ -34,12 +35,13 @@ public abstract class Member {
         return this.memberState;
     }
 
-    public void borrow(Context c, long isbnCode, Member member, LocalDate borrowedAt) {
-        this.memberState.borrowBook(c,isbnCode,member,borrowedAt);
+    @Override
+    public Book borrowBook(long isbnCode, Member member, LocalDate borrowedAt) throws HasLateBooksException {
+        return this.memberState.borrowBook(isbnCode,member,borrowedAt);
     }
-
-    public void returnBook(Context c, Book book, Member member) {
-        this.memberState.returnBook(c,book,member);
+    @Override
+    public void returnBook( Book book, Member member) {
+        this.memberState.returnBook(book,member);
     }
 
     /**

@@ -2,4 +2,7 @@
     <string name="app_name">Townsville-library</string>
     <string name="student">Student</string>
     <string name="resident">Resident</string>
+    <string name="borrow">Borrow a book</string>
+    <string name="memberId">Member Id</string>
+    <string name="wallet">Solde</string>
 </resources>

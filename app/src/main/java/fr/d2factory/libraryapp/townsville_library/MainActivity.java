@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     RadioGroup radioGroup;
     FloatingActionButton floatingActionButton;
+    private String memberType = "MEMBER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 } else {
                     Intent toLibrary = new Intent(getApplication(), LibraryActivity.class);
-                    toLibrary.putExtra("memberType",selectedRadioButton.getText().toString());
+                    toLibrary.putExtra(memberType,selectedRadioButton.getText().toString());
                     startActivity(toLibrary);
                 }
             }

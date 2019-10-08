@@ -27,7 +27,7 @@ public interface Library {
      * @see fr.d2factory.libraryapp.book.ISBN
      * @see Member
      */
-    Book borrowBook(Context c, long isbnCode, Member member, LocalDate borrowedAt) throws HasLateBooksException;
+    Book borrowBook(long isbnCode, Member member, LocalDate borrowedAt) throws HasLateBooksException;
     /**
      * A member returns a book to the library.
      * We should calculate the tarif and probably charge the member
@@ -37,5 +37,5 @@ public interface Library {
      *
      * @see Member#payBook(int)
      */
-    void returnBook(Context c, Book book, Member member);
+    void returnBook(Book book, Member member);
 }
