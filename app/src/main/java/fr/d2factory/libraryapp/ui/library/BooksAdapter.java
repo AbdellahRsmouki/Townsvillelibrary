@@ -57,7 +57,7 @@ public class BooksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         vh.bookTitle.setText(book.getTitle());
         vh.bookAuthor.setText(book.getAuthor());
         vh.bookISBN.setText(book.getIsbn().getIsbnCode()+"");
-        BookRepository br = new BookRepository();
+        BookRepository br = BookRepository.getBookRepository();
         if (br.isBorrowedBook(book))
             vh.bookState.setBackgroundColor(Color.parseColor("#FF6347"));
     }

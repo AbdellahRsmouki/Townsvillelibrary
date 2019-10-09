@@ -13,15 +13,15 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "fr.d2factory.libraryapp"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    /*configurations {
+    configurations {
         compile.exclude group: "junit", module: "junit"
-    }*/
+    }
     buildTypes {
         release {
             minifyEnabled false

@@ -12,8 +12,8 @@ import fr.d2factory.libraryapp.library.Library;
 public class Resident extends Member{
 
 
-    public Resident(int memberId, float wallet, Library memberState) {
-        super(memberId, wallet, memberState);
+    public Resident(int memberId, float wallet) {
+        super(memberId, wallet);
     }
 
     @Override
@@ -25,8 +25,10 @@ public class Resident extends Member{
     }
 
     private void pay(float toPay) {
-        if(getWallet()>toPay)
-            setWallet(getWallet()-toPay);
+        if(getWallet()>toPay) {
+            setWallet(getWallet() - toPay);
+            System.out.println("The cost was: "+toPay+"eu and now you still have: "+getWallet()+"eu");
+        }
         else
             throw new HasNoMoneyLeftException("You Have No Money!");
 

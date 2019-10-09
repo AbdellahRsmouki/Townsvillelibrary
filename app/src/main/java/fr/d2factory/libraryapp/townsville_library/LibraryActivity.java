@@ -58,7 +58,7 @@ public class LibraryActivity extends AppCompatActivity {
          * Add data here.
          */
         Log.i(TAG, "iniRecycleView: ...");
-        br = new BookRepository();
+        br = BookRepository.getBookRepository();
         updateBooksList();
 
         // 2. set layoutManger
