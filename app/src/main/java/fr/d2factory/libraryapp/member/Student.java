@@ -30,9 +30,13 @@ public class Student extends Member {
     }
 
     public void payBook(int numberOfDays) {
+        /**
+         * Check the state of the user.
+         * Then if the user is in First year or not.
+         * finally each case has a specific process
+         */
         if(numberOfDays<=30){
             if (!isFirstYear() || (isFirstYear() && this.freePeriod == 0)) {
-                System.out.println("hello");
                 pay((float) (0.10 * numberOfDays));
             }
             else{
@@ -45,15 +49,22 @@ public class Student extends Member {
             }
         }
         else
-            pay((float) (6 + 0.20 * (numberOfDays - 30)));
+            pay((float) (3 + 0.15 * (numberOfDays - 30)));
     }
 
     private void pay(float toPay) {
+        /**
+         * simple method to pay for borrowed books.
+         */
         if(getWallet()>toPay) {
             setWallet(getWallet() - toPay);
             System.out.println("The cost was: " + toPay + "eu and now you still have: " + getWallet()+"eu");
         }
         else
             throw new HasNoMoneyLeftException("You Have No Money!");
+    }
+
+    public int getFreePeriod() {
+        return freePeriod;
     }
 }

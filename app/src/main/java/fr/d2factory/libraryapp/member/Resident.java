@@ -18,6 +18,10 @@ public class Resident extends Member{
 
     @Override
     public void payBook(int numberOfDays) {
+        /**
+         * Check the state of the user.
+         * each case has a specific process
+         */
         if(numberOfDays<60)
             pay((float) (0.10*numberOfDays));
         else
@@ -25,6 +29,9 @@ public class Resident extends Member{
     }
 
     private void pay(float toPay) {
+        /**
+         * simple method to pay for borrowed books.
+         */
         if(getWallet()>toPay) {
             setWallet(getWallet() - toPay);
             System.out.println("The cost was: "+toPay+"eu and now you still have: "+getWallet()+"eu");

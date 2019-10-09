@@ -19,9 +19,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    configurations {
+    /*configurations {
         compile.exclude group: "junit", module: "junit"
-    }
+    }*/
     buildTypes {
         release {
             minifyEnabled false
